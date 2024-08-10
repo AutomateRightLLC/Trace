@@ -54,13 +54,13 @@ services:
     volumes:
       - clickhouse-data:/var/lib/clickhouse
 
-  langtrace-app-prod:
-    extends:
-      service: langtrace-app
-    build:
-      target: production
-    profiles:
-      - production
+  # langtrace-app-prod:
+  #   extends:
+  #     service: langtrace-app
+  #   build:
+  #     target: production
+  #   profiles:
+  #     - production
 
 volumes:
   postgres-data:
