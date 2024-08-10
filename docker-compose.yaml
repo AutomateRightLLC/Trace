@@ -19,11 +19,9 @@ services:
     depends_on:
       postgres-db:
         condition: service_started
-        required: true
       clickhouse-db:
         condition: service_healthy
-        required: true
-
+        
   postgres-db:
     container_name: langtrace-postgres
     image: postgres:16.2-bookworm
@@ -54,13 +52,13 @@ services:
     volumes:
       - clickhouse-data:/var/lib/clickhouse
 
-  # langtrace-app-prod:
-  #   extends:
-  #     service: langtrace-app
-  #   build:
-  #     target: production
-  #   profiles:
-  #     - production
+  langtrace-app-prod:
+    extends:
+      service: langtrace-app
+    build:
+      target: production
+    profiles:
+      - production
 
 volumes:
   postgres-data:
