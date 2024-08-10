@@ -21,7 +21,7 @@ services:
         condition: service_started
       clickhouse-db:
         condition: service_healthy
-        
+
   postgres-db:
     container_name: langtrace-postgres
     image: postgres:16.2-bookworm
@@ -47,7 +47,7 @@ services:
       test: wget --no-verbose --tries=1 --spider http://langtrace-clickhouse:8123/ping || exit 1
       retries: 3
       start_period: 30s
-      start_interval: 5s
+      interval: 5s
       interval: 30s
     volumes:
       - clickhouse-data:/var/lib/clickhouse
